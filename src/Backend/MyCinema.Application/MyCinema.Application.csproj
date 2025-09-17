@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\MyCinema.Communication\MyCinema.Communication.csproj" />
+    <ProjectReference Include="..\..\Shared\MyCinema.Exception\MyCinema.Exception.csproj" />
+    <ProjectReference Include="..\MyCinema.Domain\MyCinema.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
