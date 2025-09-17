@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyCinema.Communication.Requests;
 using MyCinema.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace MyCinema.Infrastructure.DataAcess
     {
         public MyCinemaDbContex(DbContextOptions<MyCinemaDbContex> options) : base(options) { }
 
-        public DbSet<FilmModel> Film { get; set; }
+        public DbSet<FilmModel> Films { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
