@@ -1,5 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MyCinema.Application.AutoMapper;
+using MyCinema.Application.Services.Film;
 using MyCinema.Domain.RepositoriesInterfaces.Film;
 using MyCinema.Infrastructure.DataAcess;
 using MyCinema.Infrastructure.Repositories.Film;
@@ -26,6 +29,8 @@ namespace MyCinema.API
 
             builder.Services.AddScoped<IFilmReadOnlyRepository, FilmRepository>();
             builder.Services.AddScoped<IFilmWriteOnlyRepository, FilmRepository>();
+            builder.Services.AddScoped<IFIlmService, FilmService>();
+            builder.Services.AddAutoMapper(typeof(AutoMapping));
 
             var app = builder.Build();
 
