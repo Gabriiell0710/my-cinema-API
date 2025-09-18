@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Shared\MyCinema.Communication\MyCinema.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\MyCinema.Exception\MyCinema.Exception.csproj" />
     <ProjectReference Include="..\MyCinema.Application\MyCinema.Application.csproj" />
