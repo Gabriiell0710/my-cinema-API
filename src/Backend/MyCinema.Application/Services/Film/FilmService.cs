@@ -24,6 +24,16 @@ namespace MyCinema.Application.Services.Film
             _mapper = mapper;
         }
 
+        public async Task<List<ResponseRegisteredFilmJson>> FindAllFilms()
+        {
+            List<FilmModel> filmListModel = await _filmReadOnlyRepository.FindAllFilms();
+
+            var film = _mapper.Map<List<ResponseRegisteredFilmJson>>(filmListModel);
+
+            return film;
+
+        }
+
         public async Task<ResponseRegisteredFilmJson> AddFilm(RequestRegisterFilmJson request)
         {
             var film = _mapper.Map<FilmModel>(request);
@@ -35,5 +45,7 @@ namespace MyCinema.Application.Services.Film
                 Title = request.Title,
             };
         }
+
+        
     }
 }

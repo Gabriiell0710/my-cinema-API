@@ -17,6 +17,14 @@ namespace MyCinema.API.Controllers
             _filmService = filmService;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<List<ResponseRegisteredFilmJson>>> GetAll()
+        {
+            List<ResponseRegisteredFilmJson> films = await _filmService.FindAllFilms();
+
+            return Ok(films);
+        }
+
         [HttpPost]
         public async Task<ActionResult<ResponseRegisteredFilmJson>> Create([FromBody] RequestRegisterFilmJson request)
         {
