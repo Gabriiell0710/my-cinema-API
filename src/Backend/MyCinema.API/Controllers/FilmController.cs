@@ -48,5 +48,13 @@ namespace MyCinema.API.Controllers
 
             return Ok(film);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ResponseRegisteredFilmJson>> Delete (int id)
+        {
+            await _filmService.DeleteFilm(id);
+
+            return Ok(true);
+        }
     }
 }

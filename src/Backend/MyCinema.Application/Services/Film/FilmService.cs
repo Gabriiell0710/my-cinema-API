@@ -14,13 +14,13 @@ namespace MyCinema.Application.Services.Film
     public class FilmService : IFIlmService
     {
         private readonly IFilmReadOnlyRepository _filmReadOnlyRepository;
-        private readonly IFilmWriteOnlyRepository _filmWriteOnlyRepoditory;
+        private readonly IFilmWriteOnlyRepository _filmWriteOnlyRepository;
         private readonly IMapper _mapper;
 
         public FilmService (IFilmReadOnlyRepository filmReadOnlyRepository, IFilmWriteOnlyRepository filmWriteOnlyRepoditory, IMapper mapper)
         {
             _filmReadOnlyRepository = filmReadOnlyRepository;
-            _filmWriteOnlyRepoditory = filmWriteOnlyRepoditory;
+            _filmWriteOnlyRepository = filmWriteOnlyRepoditory;
             _mapper = mapper;
         }
 
@@ -47,7 +47,7 @@ namespace MyCinema.Application.Services.Film
         {
             var film = _mapper.Map<FilmModel>(request);
 
-            await _filmWriteOnlyRepoditory.AddFilm(film);
+            await _filmWriteOnlyRepository.AddFilm(film);
 
             return new ResponseRegisteredFilmJson
             {
@@ -58,12 +58,19 @@ namespace MyCinema.Application.Services.Film
         public async Task<ResponseRegisteredFilmJson> UpdateFilm(RequestRegisterFilmJson request, int id)
         {
             var requestToConvert = _mapper.Map<FilmModel>(request);
-            FilmModel film = await _filmWriteOnlyRepoditory.UpdateFilm(requestToConvert, id);
+            FilmModel film = await _filmWriteOnlyRepository.UpdateFilm(requestToConvert, id);
 
             var filmUpdated = _mapper.Map<ResponseRegisteredFilmJson>(film);
 
             return filmUpdated;
             
+        }
+
+        public async Task<bool> DeleteFilm(int id)
+        {
+             await _filmWriteOnlyRepository.DeleteFilm(id);
+
+            return true;
         }
     }
 }
