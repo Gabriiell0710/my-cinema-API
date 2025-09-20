@@ -34,6 +34,15 @@ namespace MyCinema.Application.Services.Film
 
         }
 
+        public async Task<ResponseRegisteredFilmJson> FindFilmById(int id)
+        {
+            FilmModel filmById = await _filmReadOnlyRepository.FindFilmById(id);
+
+            var film = _mapper.Map<ResponseRegisteredFilmJson>(filmById);
+
+            return film;
+        }
+
         public async Task<ResponseRegisteredFilmJson> AddFilm(RequestRegisterFilmJson request)
         {
             var film = _mapper.Map<FilmModel>(request);

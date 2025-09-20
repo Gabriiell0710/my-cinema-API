@@ -8,5 +8,7 @@ namespace MyCinema.Application.Services.Film
         public Task<ResponseRegisteredFilmJson> AddFilm(RequestRegisterFilmJson request);
 
         public Task<List<ResponseRegisteredFilmJson>> FindAllFilms();
+
+        public Task<ResponseRegisteredFilmJson> FindFilmById(int id);
     }
 }
