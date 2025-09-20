@@ -20,8 +20,6 @@ namespace MyCinema.Infrastructure.Repositories.Film
             _dbContext = dbContext;
         }
 
-
-
         public async Task<List<FilmModel>> FindAllFilms()
         {
             return await _dbContext.Films.ToListAsync();

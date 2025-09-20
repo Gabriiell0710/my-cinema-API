@@ -8,8 +8,8 @@ namespace MyCinema.Domain.Models
 {
     public class RoomModel
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
-        public string? Capacity { get; set; }
+        public int Capacity { get; set; }
     }
 }
