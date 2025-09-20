@@ -10,5 +10,7 @@ namespace MyCinema.Application.Services.Film
         public Task<List<ResponseRegisteredFilmJson>> FindAllFilms();
 
         public Task<ResponseRegisteredFilmJson> FindFilmById(int id);
+
+        public Task<ResponseRegisteredFilmJson> UpdateFilm(RequestRegisterFilmJson request, int id);
     }
 }

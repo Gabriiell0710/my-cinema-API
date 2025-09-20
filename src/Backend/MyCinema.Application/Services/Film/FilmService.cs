@@ -55,6 +55,15 @@ namespace MyCinema.Application.Services.Film
             };
         }
 
-        
+        public async Task<ResponseRegisteredFilmJson> UpdateFilm(RequestRegisterFilmJson request, int id)
+        {
+            var requestToConvert = _mapper.Map<FilmModel>(request);
+            FilmModel film = await _filmWriteOnlyRepoditory.UpdateFilm(requestToConvert, id);
+
+            var filmUpdated = _mapper.Map<ResponseRegisteredFilmJson>(film);
+
+            return filmUpdated;
+            
+        }
     }
 }

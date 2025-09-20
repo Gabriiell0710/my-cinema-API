@@ -40,5 +40,13 @@ namespace MyCinema.API.Controllers
 
             return Ok(responseRegister);
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ResponseRegisteredFilmJson>> Update([FromBody] RequestRegisterFilmJson request, int id)
+        {
+            ResponseRegisteredFilmJson film = await _filmService.UpdateFilm(request,id);
+
+            return Ok(film);
+        }
     }
 }
