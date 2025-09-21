@@ -11,6 +11,8 @@ namespace MyCinema.Application.AutoMapper
         { 
             CreateMap<RequestRegisterFilmJson, FilmModel>();
             CreateMap<FilmModel, ResponseRegisteredFilmJson>();
+            CreateMap<RequestRegisterRoomJson, RoomModel>();
+            CreateMap<RoomModel, ResponseRegisteredRoomJson>();
         }
     }
 }

@@ -4,8 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 using MyCinema.Application.AutoMapper;
 using MyCinema.Application.Services.Film;
 using MyCinema.Domain.RepositoriesInterfaces.Film;
+using MyCinema.Domain.RepositoriesInterfaces.Room;
 using MyCinema.Infrastructure.DataAcess;
 using MyCinema.Infrastructure.Repositories.Film;
+using MyCinema.Infrastructure.Repositories.Room;
 
 namespace MyCinema.API
 {
@@ -29,6 +31,8 @@ namespace MyCinema.API
 
             builder.Services.AddScoped<IFilmReadOnlyRepository, FilmRepository>();
             builder.Services.AddScoped<IFilmWriteOnlyRepository, FilmRepository>();
+            builder.Services.AddScoped<IRoomReadOnlyRepository, RoomRepository>();
+            builder.Services.AddScoped<IRoomWriteOnlyRepository, RoomRepository>();
             builder.Services.AddScoped<IFIlmService, FilmService>();
             builder.Services.AddAutoMapper(typeof(AutoMapping));
 
