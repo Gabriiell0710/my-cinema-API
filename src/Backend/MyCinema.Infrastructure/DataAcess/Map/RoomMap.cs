@@ -13,7 +13,7 @@ namespace MyCinema.Infrastructure.DataAcess.Map
     {
         public void Configure(EntityTypeBuilder<RoomModel> builder)
         {
-            builder.HasKey(x => x.ID);
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(255);
             builder.Property(x => x.Capacity).IsRequired();
         }

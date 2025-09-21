@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyCinema.Infrastructure.DataAcess;
 
@@ -10,9 +11,11 @@ using MyCinema.Infrastructure.DataAcess;
 namespace MyCinema.Infrastructure.Migrations
 {
     [DbContext(typeof(MyCinemaDbContex))]
-    partial class MyCinemaDbContexModelSnapshot : ModelSnapshot
+    [Migration("20250921143834_CreateTableRooms")]
+    partial class CreateTableRooms
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
