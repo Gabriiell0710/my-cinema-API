@@ -17,13 +17,17 @@ namespace MyCinema.Infrastructure.Repositories.Session
 
         public async Task<List<SessionModel>> FindAllSessions()
         {
-            return await _DbContext.Sessions.ToListAsync();
+            return await _DbContext.Sessions
+                .Include(s => s.Room)
+                .Include(s => s.Film)
+                .ToListAsync();
         }
 
         public async Task<SessionModel> FindSessionById(int id)
         {
             return await _DbContext.Sessions.FirstOrDefaultAsync(x => x.Id == id);
         }
+
         public async Task<SessionModel> AddSession(SessionModel session)
         {
              await _DbContext.Sessions.AddAsync(session);

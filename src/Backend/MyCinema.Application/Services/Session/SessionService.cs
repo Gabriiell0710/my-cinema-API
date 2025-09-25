@@ -37,12 +37,11 @@ namespace MyCinema.Application.Services.Session
         public async Task<ResponseRegisteredSessionJson> AddSession(RequestRegisterSessionJson request)
         {
             var session = _mapper.Map<SessionModel>(request);
-            await  _sessionWriteOnlyRepository.AddSession(session);
+           var result = await  _sessionWriteOnlyRepository.AddSession(session);
 
-            return new ResponseRegisteredSessionJson
-            {
-                DateAndTime = request.DateAndTime,
-            };
+            var sessionUpdated = _mapper.Map<ResponseRegisteredSessionJson>(result);
+
+            return sessionUpdated;
         }
         public async Task<ResponseRegisteredSessionJson> UpdateSession(RequestRegisterSessionJson request, int id)
         {

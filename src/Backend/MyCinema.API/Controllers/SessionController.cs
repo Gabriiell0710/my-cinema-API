@@ -42,7 +42,7 @@ namespace MyCinema.API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<ResponseRegisteredSessionJson>> Update (RequestRegisterSessionJson request, int id)
         {
-            ResponseRegisteredSessionJson session = await _sessionService.UpdateSession(request, id);
+            var session = await _sessionService.UpdateSession(request, id);
             return Ok(session);
         }
         [HttpDelete("{id}")]

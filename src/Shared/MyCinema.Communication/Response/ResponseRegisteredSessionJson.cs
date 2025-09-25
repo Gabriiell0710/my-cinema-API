@@ -2,6 +2,9 @@
 {
     public class ResponseRegisteredSessionJson
     {
-        public DateTime DateAndTime { get; set; }
+        public string Date { get; set; }
+        public string Hour { get; set; }
+        public string Film { get; set; }
+        public string Room { get; set; }
     }
 }
