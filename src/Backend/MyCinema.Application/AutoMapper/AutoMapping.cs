@@ -21,6 +21,7 @@ namespace MyCinema.Application.AutoMapper
                 .ForMember(dest => dest.Hour, opt => opt.MapFrom(src => src.DateAndTime.Hour.ToString("hh:mm")))
                 .ForMember(dest => dest.Film, opt => opt.MapFrom(src => src.Film.Title))
                 .ForMember(dest => dest.Room, opt => opt.MapFrom(src => src.Room.Name));
+         
         }
     }
 }
