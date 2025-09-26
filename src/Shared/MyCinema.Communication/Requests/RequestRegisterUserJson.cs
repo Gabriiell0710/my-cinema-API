@@ -1,14 +1,12 @@
 ﻿using MyCinema.Communication.Enums;
 
-namespace MyCinema.Domain.Models
+namespace MyCinema.Communication.Requests
 {
-    public class UserModel
+    public class RequestRegisterUserJson
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public ProfileEnum Profile { get; set; }
-
     }
 }

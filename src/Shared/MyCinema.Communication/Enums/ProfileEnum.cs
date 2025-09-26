@@ -1,8 +1,8 @@
-﻿namespace MyCinema.Domain.Enums
+﻿namespace MyCinema.Communication.Enums
 {
     public enum ProfileEnum
     {
         Administrator = 1,
-        Standard = 2
+        Stardard = 2
     }
 }
