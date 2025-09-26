@@ -39,9 +39,9 @@ namespace MyCinema.Application.Services.Session
             var session = _mapper.Map<SessionModel>(request);
            var result = await  _sessionWriteOnlyRepository.AddSession(session);
 
-            var sessionUpdated = _mapper.Map<ResponseRegisteredSessionJson>(result);
+            var sessionResponse = _mapper.Map<ResponseRegisteredSessionJson>(result);
 
-            return sessionUpdated;
+            return sessionResponse;
         }
         public async Task<ResponseRegisteredSessionJson> UpdateSession(RequestRegisterSessionJson request, int id)
         {
