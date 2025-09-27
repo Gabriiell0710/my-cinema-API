@@ -12,6 +12,7 @@ namespace MyCinema.Infrastructure.DataAcess
         public DbSet<RoomModel> Rooms { get; set; }
         public DbSet<SessionModel> Sessions { get; set; }
         public DbSet<UserModel> Users { get; set; }
+        public DbSet<SessionHistoryModel> SessionsHistory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,6 +20,7 @@ namespace MyCinema.Infrastructure.DataAcess
             modelBuilder.ApplyConfiguration(new RoomMap());
             modelBuilder.ApplyConfiguration(new SessionMap());
             modelBuilder.ApplyConfiguration(new  UserMap());
+            modelBuilder.ApplyConfiguration(new SessionHistoryMap());
 
             base.OnModelCreating(modelBuilder);
         }
