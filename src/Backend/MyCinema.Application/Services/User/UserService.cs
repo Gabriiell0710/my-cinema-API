@@ -34,19 +34,16 @@ namespace MyCinema.Application.Services.User
         public async Task<ResponseRegisteredUserJson> AddUser(RequestRegisterUserJson request)
         {
             var user = _mapper.Map<UserModel>(request);
-            await _userWrireOnlyRepository.AddUser(user);
+           var userCreated = await _userWrireOnlyRepository.AddUser(user);
 
-            return new ResponseRegisteredUserJson
-            {
-                Name = user.Name,
-                Profile = user.Profile,
-            };
+           return _mapper.Map<ResponseRegisteredUserJson>(userCreated);
+
         }
 
         public async Task<ResponseRegisteredUserJson> UpdateUser(RequestRegisterUserJson request, int id)
         {
             var userToUpdate = _mapper.Map<UserModel>(request);
-            var userToConvert = await _userWrireOnlyRepository.UpdateUser(userToUpdate, id);
+            UserModel userToConvert = await _userWrireOnlyRepository.UpdateUser(userToUpdate, id);
             var userUpdated = _mapper.Map<ResponseRegisteredUserJson>(userToConvert);
 
             return userUpdated;

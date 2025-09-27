@@ -39,8 +39,15 @@ namespace MyCinema.Infrastructure.Repositories.User
             {
                 throw new Exception($"O usuário com o ID {id} não foi encontrado no banco de dados");
             }
+
+            userToUpdate.Name = user.Name;
+            userToUpdate.Email = user.Email;
+            userToUpdate.Password = user.Password;
+            userToUpdate.Profile = user.Profile;
+
             _DbContext.Users.Update(userToUpdate);
             await _DbContext.SaveChangesAsync();
+
             return userToUpdate;
         }
 

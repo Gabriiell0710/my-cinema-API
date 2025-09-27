@@ -43,9 +43,14 @@ namespace MyCinema.Infrastructure.Repositories.Session
             {
                 throw new Exception($"A sessão com o Id: {id} não existe no banco de dados.");
             }
+
+             sessionModel.DateAndTime = session.DateAndTime;
+             sessionModel.RoomId = session.RoomId;
+             sessionModel.FilmId = session.FilmId;
+             
              _DbContext.Sessions.Update(sessionModel);
-            await _DbContext.SaveChangesAsync();
-            return sessionModel;
+             await _DbContext.SaveChangesAsync();
+             return sessionModel;
         }
 
         public async Task<bool> DeleteSession(int id)
