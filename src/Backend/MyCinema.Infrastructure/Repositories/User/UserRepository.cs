@@ -14,17 +14,17 @@ namespace MyCinema.Infrastructure.Repositories.User
             _DbContext = dbContext;
         }
 
-        public async Task<List<UserModel>> FindAllUsers()
+        public async Task<List<UserModel>> GetAll()
         {
             return await _DbContext.Users.ToListAsync();
         }
 
-        public async Task<UserModel> FindUserById(int id)
+        public async Task<UserModel> GetById(int id)
         {
             return await _DbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<UserModel> AddUser(UserModel user)
+        public async Task<UserModel> Add(UserModel user)
         {
             await _DbContext.Users.AddAsync(user);
             await _DbContext.SaveChangesAsync();
@@ -32,9 +32,9 @@ namespace MyCinema.Infrastructure.Repositories.User
             
         }
 
-        public async Task<UserModel> UpdateUser(UserModel user, int id)
+        public async Task<UserModel> Update(UserModel user, int id)
         {
-            var userToUpdate = await FindUserById(id);
+            var userToUpdate = await GetById(id);
             if(userToUpdate == null)
             {
                 throw new Exception($"O usuário com o ID {id} não foi encontrado no banco de dados");
@@ -51,9 +51,9 @@ namespace MyCinema.Infrastructure.Repositories.User
             return userToUpdate;
         }
 
-        public async Task<bool> DeleteUser(int id)
+        public async Task<bool> Delete(int id)
         {
-            var userToDelete = await FindUserById(id);
+            var userToDelete = await GetById(id);
             if (userToDelete == null)
             {
                 throw new Exception($"O usuário com o ID {id} não foi encontrado no banco de dados");

@@ -15,25 +15,25 @@ namespace MyCinema.Infrastructure.Repositories.SessionHistory
             _dbContext = dbContext;
         }
 
-        public async Task<List<SessionHistoryModel>> FindAllSessionsHistory()
+        public async Task<List<SessionHistoryModel>> GetAll()
         {
             return await _dbContext.SessionsHistory.ToListAsync();
         }
 
-        public async Task<SessionHistoryModel> FindSessionHistoryById(int id)
+        public async Task<SessionHistoryModel> GetById(int id)
         {
             return await _dbContext.SessionsHistory.FirstOrDefaultAsync(x => x.Id == id);
         }
-        public async Task<SessionHistoryModel> AddSessionHistory(SessionHistoryModel sessionHistory)
+        public async Task<SessionHistoryModel> Add(SessionHistoryModel sessionHistory)
         {
             await _dbContext.SessionsHistory.AddAsync(sessionHistory);
             await _dbContext.SaveChangesAsync();
             return sessionHistory;
         }
 
-        public async Task<SessionHistoryModel> UpdateSessionHistory(SessionHistoryModel sessionHistory, int id)
+        public async Task<SessionHistoryModel> Update(SessionHistoryModel sessionHistory, int id)
         {
-            SessionHistoryModel sessionModel = await FindSessionHistoryById(id);
+            SessionHistoryModel sessionModel = await GetById(id);
             if (sessionModel == null)
             {
                 throw new Exception($"O histórico de sessão com o Id: {id} não existe no banco de dados.");
@@ -48,9 +48,9 @@ namespace MyCinema.Infrastructure.Repositories.SessionHistory
             return sessionModel;
         }
 
-        public async Task<bool> DeleteSessionHistory(int id)
+        public async Task<bool> Delete(int id)
         {
-            SessionHistoryModel sessionModel = await FindSessionHistoryById(id);
+            SessionHistoryModel sessionModel = await GetById(id);
             if (sessionModel == null)
             {
                 throw new Exception($"O histórico de sessão com o Id: {id} não existe no banco de dados.");

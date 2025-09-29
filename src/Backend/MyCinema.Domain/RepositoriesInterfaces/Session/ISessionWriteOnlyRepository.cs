@@ -2,7 +2,7 @@
 
 namespace MyCinema.Domain.RepositoriesInterfaces.Session
 {
-    public interface ISessionWriteOnlyRepository :  IWriteOnlyBaseRepositoryInterface<RoomModel>
+    public interface ISessionWriteOnlyRepository :  IWriteOnlyBaseRepositoryInterface<SessionModel>
     {
     }
 }

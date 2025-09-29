@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyCinema.Communication.Requests;
 using MyCinema.Domain.Models;
+using MyCinema.Domain.RepositoriesInterfaces;
 using MyCinema.Domain.RepositoriesInterfaces.Film;
 using MyCinema.Infrastructure.DataAcess;
 using System;
@@ -20,26 +21,26 @@ namespace MyCinema.Infrastructure.Repositories.Film
             _dbContext = dbContext;
         }
 
-        public async Task<List<FilmModel>> FindAllFilms()
+        public async Task<List<FilmModel>> GetAll()
         {
             return await _dbContext.Films.ToListAsync();
         }
 
-        public async Task<FilmModel> FindFilmById(int id)
+        public async Task<FilmModel> GetById(int id)
         {
             return await _dbContext.Films.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<FilmModel> AddFilm(FilmModel film)
+        public async Task<FilmModel> Add(FilmModel film)
         {
             await _dbContext.Films.AddAsync(film);
             await _dbContext.SaveChangesAsync();
             return film;
         }
 
-        public async Task<FilmModel> UpdateFilm(FilmModel film, int id)
+        public async Task<FilmModel> Update(FilmModel film, int id)
         {
-            FilmModel filmById = await FindFilmById(id);
+            FilmModel filmById = await GetById(id);
 
             if(filmById == null)
             {
@@ -57,9 +58,9 @@ namespace MyCinema.Infrastructure.Repositories.Film
         }
         
 
-        public async Task<bool> DeleteFilm(int id)
+        public async Task<bool> Delete(int id)
         {
-            FilmModel filmById = await FindFilmById(id);
+            FilmModel filmById = await GetById(id);
 
             if (filmById == null)
             {
@@ -71,7 +72,6 @@ namespace MyCinema.Infrastructure.Repositories.Film
 
             return true;
         }
-
         
     }
 }

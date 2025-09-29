@@ -15,7 +15,7 @@ namespace MyCinema.Infrastructure.Repositories.Session
             _DbContext = context;
         }
 
-        public async Task<List<SessionModel>> FindAllSessions()
+        public async Task<List<SessionModel>> GetAll()
         {
             return await _DbContext.Sessions
                 .Include(s => s.Room)
@@ -23,12 +23,12 @@ namespace MyCinema.Infrastructure.Repositories.Session
                 .ToListAsync();
         }
 
-        public async Task<SessionModel> FindSessionById(int id)
+        public async Task<SessionModel> GetById(int id)
         {
             return await _DbContext.Sessions.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<SessionModel> AddSession(SessionModel session)
+        public async Task<SessionModel> Add(SessionModel session)
         {
              await _DbContext.Sessions.AddAsync(session);
              await _DbContext.SaveChangesAsync();
@@ -36,9 +36,9 @@ namespace MyCinema.Infrastructure.Repositories.Session
 
         }
 
-        public async Task<SessionModel> UpdateSession(SessionModel session, int id)
+        public async Task<SessionModel> Update(SessionModel session, int id)
         {
-            SessionModel sessionModel = await FindSessionById(id);
+            SessionModel sessionModel = await GetById(id);
             if (sessionModel == null) 
             {
                 throw new Exception($"A sessão com o Id: {id} não existe no banco de dados.");
@@ -53,9 +53,9 @@ namespace MyCinema.Infrastructure.Repositories.Session
              return sessionModel;
         }
 
-        public async Task<bool> DeleteSession(int id)
+        public async Task<bool> Delete(int id)
         {
-            SessionModel sessionModel = await FindSessionById(id);
+            SessionModel sessionModel = await GetById(id);
             if (sessionModel == null)
             {
                 throw new Exception($"A sessão com o Id {id} não existe no banco de dados.");

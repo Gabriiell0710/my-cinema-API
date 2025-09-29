@@ -20,25 +20,25 @@ namespace MyCinema.Infrastructure.Repositories.Room
             _dBContext = dBContext;
         }
 
-        public async Task<List<RoomModel>> FindAllRooms()
+        public async Task<List<RoomModel>> GetAll()
         {
             return await _dBContext.Rooms.ToListAsync();
         }
 
-        public async Task<RoomModel> FindRoomById(int id)
+        public async Task<RoomModel> GetById(int id)
         {
             return await _dBContext.Rooms.FirstOrDefaultAsync(x => x.Id == id);
         }
-        public async Task<RoomModel> AddRoom(RoomModel room)
+        public async Task<RoomModel> Add(RoomModel room)
         {
             await _dBContext.Rooms.AddAsync(room);
             await _dBContext.SaveChangesAsync();
             return room;
         }
 
-        public async Task<RoomModel> UpdateRoom(RoomModel room, int id)
+        public async Task<RoomModel> Update(RoomModel room, int id)
         {
-            RoomModel roomById = await FindRoomById(id);
+            RoomModel roomById = await GetById(id);
             if( roomById == null)
             {
                 throw new Exception($"A sala com o ID {id} não foi encontrada no banco de dados");
@@ -53,9 +53,9 @@ namespace MyCinema.Infrastructure.Repositories.Room
 
         }
 
-        public async Task<bool> DeleteRoom(int id)
+        public async Task<bool> Delete(int id)
         {
-            RoomModel roomById = await FindRoomById(id);
+            RoomModel roomById = await GetById(id);
 
             if (roomById == null)
             {
