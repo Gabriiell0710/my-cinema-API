@@ -1,8 +1,7 @@
 ﻿namespace MyCinema.Domain.Models
 {
-    public class FilmModel
+    public class FilmModel : ModelBase
     {
-        public int Id { get; set; }
         public string? Title { get; set; }
         public string? Gender { get; set; }
         public int Duration { get; set; }

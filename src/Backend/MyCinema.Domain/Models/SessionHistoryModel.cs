@@ -2,9 +2,8 @@
 
 namespace MyCinema.Domain.Models
 {
-    public class SessionHistoryModel
+    public class SessionHistoryModel : ModelBase
     {
-        public int Id { get; set; }
         public int UserId { get; set; }
         public int SessionId { get; set; }
         public SessionStatusEnum Status { get; set; }

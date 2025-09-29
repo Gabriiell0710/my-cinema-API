@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyCinema.Domain.Models
 {
-    public class RoomModel
+    public class RoomModel : ModelBase
     {
-        public int Id { get; set; }
         public string? Name { get; set; }
         public int Capacity { get; set; }
     }
