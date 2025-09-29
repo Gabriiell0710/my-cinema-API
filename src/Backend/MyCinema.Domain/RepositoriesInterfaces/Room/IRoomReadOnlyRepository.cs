@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace MyCinema.Domain.RepositoriesInterfaces.Room
 {
-    public interface IRoomReadOnlyRepository
+    public interface IRoomReadOnlyRepository : IReadOnlyBaseRepositoryInterface<RoomModel>
     {
-        Task<List<RoomModel>> FindAllRooms();
-        Task<RoomModel> FindRoomById(int id);
+       
     }
 }

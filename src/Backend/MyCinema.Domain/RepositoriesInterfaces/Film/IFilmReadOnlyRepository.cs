@@ -3,10 +3,7 @@ using MyCinema.Communication.Requests;
 
 namespace MyCinema.Domain.RepositoriesInterfaces.Film
 {
-    public interface IFilmReadOnlyRepository
+    public interface IFilmReadOnlyRepository : IReadOnlyBaseRepositoryInterface<FilmModel>
     {
-        Task<List<FilmModel>> FindAllFilms();
-        Task<FilmModel> FindFilmById(int id);
-
     }
 }

@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyCinema.Domain.RepositoriesInterfaces.Film
 {
-    public interface IFilmWriteOnlyRepository
+    public interface IFilmWriteOnlyRepository : IWriteOnlyBaseRepositoryInterface<FilmModel>
     {
-        Task<FilmModel> AddFilm(FilmModel film);
-        Task<FilmModel> UpdateFilm(FilmModel film, int id);
-        Task<bool> DeleteFilm(int id);
     }
 }

@@ -2,9 +2,7 @@
 
 namespace MyCinema.Domain.RepositoriesInterfaces.SessionHistory
 {
-    public interface ISessionHistoryReadOnlyRepository
+    public interface ISessionHistoryReadOnlyRepository : IReadOnlyBaseRepositoryInterface<SessionHistoryModel>
     {
-        Task<List<SessionHistoryModel>> FindAllSessionsHistory();
-        Task<SessionHistoryModel> FindSessionHistoryById(int id);
     }
 }

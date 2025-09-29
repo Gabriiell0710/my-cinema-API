@@ -2,9 +2,7 @@
 
 namespace MyCinema.Domain.RepositoriesInterfaces.Session
 {
-    public interface ISessionReadOnlyRepository
+    public interface ISessionReadOnlyRepository : IReadOnlyBaseRepositoryInterface<SessionModel>
     {
-        Task<List<SessionModel>> FindAllSessions();
-        Task<SessionModel> FindSessionById(int id);
     }
 }

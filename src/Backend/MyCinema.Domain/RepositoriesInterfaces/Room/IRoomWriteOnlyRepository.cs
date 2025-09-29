@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyCinema.Domain.RepositoriesInterfaces.Room
 {
-    public interface IRoomWriteOnlyRepository
+    public interface IRoomWriteOnlyRepository : IWriteOnlyBaseRepositoryInterface<RoomModel>
     {
-        Task<RoomModel> AddRoom(RoomModel romm);
-        Task<RoomModel> UpdateRoom(RoomModel room, int id);
-        Task<bool> DeleteRoom(int id);
     }
 }

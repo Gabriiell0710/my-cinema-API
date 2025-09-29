@@ -2,10 +2,7 @@
 
 namespace MyCinema.Domain.RepositoriesInterfaces.Session
 {
-    public interface ISessionWriteOnlyRepository
+    public interface ISessionWriteOnlyRepository :  IWriteOnlyBaseRepositoryInterface<RoomModel>
     {
-        Task<SessionModel> AddSession (SessionModel session);
-        Task<SessionModel> UpdateSession (SessionModel session, int id);
-        Task<bool> DeleteSession(int id);
     }
 }

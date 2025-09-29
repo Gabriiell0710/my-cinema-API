@@ -2,9 +2,7 @@
 
 namespace MyCinema.Domain.RepositoriesInterfaces.User
 {
-    public interface IUserReadOnlyRepository
+    public interface IUserReadOnlyRepository : IReadOnlyBaseRepositoryInterface<UserModel>
     {
-        Task<List<UserModel>> FindAllUsers();
-        Task<UserModel> FindUserById(int id);
     }
 }
