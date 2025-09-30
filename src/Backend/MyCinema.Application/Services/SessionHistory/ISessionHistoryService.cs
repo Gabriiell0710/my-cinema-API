@@ -1,15 +1,14 @@
-﻿using MyCinema.Communication.Enums;
-using MyCinema.Communication.Requests;
+﻿using MyCinema.Communication.Requests;
 using MyCinema.Communication.Response;
 
 namespace MyCinema.Application.Services.SessionHistory
 {
-    public interface ISessionHistoryService
+    public interface ISessionHistoryService : IBaseServiceInterface<ResponseRegisteredSessionHistoryJson, RequestRegisterSessionHistoryJson>
     {
-        Task<List<ResponseRegisteredSessionHistoryJson>> FindAllSessionHistories();
-        Task<ResponseRegisteredSessionHistoryJson> FindSessionHistoryById(int id);
-        Task<ResponseRegisteredSessionHistoryJson> AddSessionHistory(RequestRegisterSessionHistoryJson request);
-        Task<ResponseRegisteredSessionHistoryJson> UpdateSessionHistory(SessionStatusEnum status, int id);
-        Task<bool> DeleteSessionHistory(int id);
+        Task<List<ResponseRegisteredSessionHistoryJson>> GetAll();
+        Task<ResponseRegisteredSessionHistoryJson> GetById(int id);
+        Task<ResponseRegisteredSessionHistoryJson> Add(RequestRegisterSessionHistoryJson request);
+        Task<ResponseRegisteredSessionHistoryJson> Update(RequestRegisterSessionHistoryJson request, int id);
+        Task<bool> Delete(int id);
     }
 }

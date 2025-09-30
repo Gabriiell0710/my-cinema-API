@@ -3,15 +3,17 @@ using MyCinema.Communication.Response;
 
 namespace MyCinema.Application.Services.Film
 {
-    public interface IFIlmService
+    public interface IFIlmService :IBaseServiceInterface<ResponseRegisteredFilmJson,RequestRegisterFilmJson>
     {
-        public Task<ResponseRegisteredFilmJson> AddFilm(RequestRegisterFilmJson request);
+     
+        public Task<List<ResponseRegisteredFilmJson>> GetAll();
 
-        public Task<List<ResponseRegisteredFilmJson>> FindAllFilms();
+        public Task<ResponseRegisteredFilmJson> GetById(int id);
 
-        public Task<ResponseRegisteredFilmJson> FindFilmById(int id);
+        public Task<ResponseRegisteredFilmJson> Add(RequestRegisterFilmJson request);
 
-        public Task<ResponseRegisteredFilmJson> UpdateFilm(RequestRegisterFilmJson request, int id);
-        public Task<bool> DeleteFilm(int id);
+        public Task<ResponseRegisteredFilmJson> Update(RequestRegisterFilmJson request, int id);
+
+        public Task<bool> Delete(int id);
     }
 }

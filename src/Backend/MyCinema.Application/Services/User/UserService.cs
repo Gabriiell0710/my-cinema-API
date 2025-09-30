@@ -19,39 +19,39 @@ namespace MyCinema.Application.Services.User
             _mapper = mapper;
         }
 
-        public async Task<List<ResponseRegisteredUserJson>> FindAllUsers()
+        public async Task<List<ResponseRegisteredUserJson>> GetAll()
         {
-            List<UserModel> user = await _userReadOnlyRepository.FindAllUsers();
+            List<UserModel> user = await _userReadOnlyRepository.GetAll();
             return _mapper.Map<List<ResponseRegisteredUserJson>>(user);
         }
 
-        public async Task<ResponseRegisteredUserJson> FindUserById(int id)
+        public async Task<ResponseRegisteredUserJson> GetById(int id)
         {
-            var userById = await _userReadOnlyRepository.FindUserById(id);
+            var userById = await _userReadOnlyRepository.GetById(id);
             return _mapper.Map<ResponseRegisteredUserJson>(userById);
         }
 
-        public async Task<ResponseRegisteredUserJson> AddUser(RequestRegisterUserJson request)
+        public async Task<ResponseRegisteredUserJson> Add(RequestRegisterUserJson request)
         {
             var user = _mapper.Map<UserModel>(request);
-           var userCreated = await _userWrireOnlyRepository.AddUser(user);
+           var userCreated = await _userWrireOnlyRepository.Add(user);
 
            return _mapper.Map<ResponseRegisteredUserJson>(userCreated);
 
         }
 
-        public async Task<ResponseRegisteredUserJson> UpdateUser(RequestRegisterUserJson request, int id)
+        public async Task<ResponseRegisteredUserJson> Update(RequestRegisterUserJson request, int id)
         {
             var userToUpdate = _mapper.Map<UserModel>(request);
-            UserModel userToConvert = await _userWrireOnlyRepository.UpdateUser(userToUpdate, id);
+            UserModel userToConvert = await _userWrireOnlyRepository.Update(userToUpdate, id);
             var userUpdated = _mapper.Map<ResponseRegisteredUserJson>(userToConvert);
 
             return userUpdated;
         }
 
-        public async Task<bool> DeleteUser(int id)
+        public async Task<bool> Delete(int id)
         {
-            await _userWrireOnlyRepository.DeleteUser(id);
+            await _userWrireOnlyRepository.Delete(id);
             return true;
         }
 

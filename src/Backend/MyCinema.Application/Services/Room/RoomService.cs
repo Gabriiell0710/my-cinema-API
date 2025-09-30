@@ -24,28 +24,28 @@ namespace MyCinema.Application.Services.Room
             _mapper = mapper;
         }
 
-        public async Task<List<ResponseRegisteredRoomJson>> FindAllRooms()
+        public async Task<List<ResponseRegisteredRoomJson>> GetAll()
         {
-            List<RoomModel> roomListModel = await _roomReadOnlyRepository.FindAllRooms();
+            List<RoomModel> roomListModel = await _roomReadOnlyRepository.GetAll();
 
             var rooms = _mapper.Map<List<ResponseRegisteredRoomJson>>(roomListModel);
 
             return rooms;
         }
 
-        public async Task<ResponseRegisteredRoomJson> FindRoomById(int id)
+        public async Task<ResponseRegisteredRoomJson> GetById(int id)
         {
-            RoomModel roomModel = await _roomReadOnlyRepository.FindRoomById(id);
+            RoomModel roomModel = await _roomReadOnlyRepository.GetById(id);
 
             var room = _mapper.Map<ResponseRegisteredRoomJson>(roomModel);
 
             return room;
         }
-        public async Task<ResponseRegisteredRoomJson> AddRoom(RequestRegisterRoomJson request)
+        public async Task<ResponseRegisteredRoomJson> Add(RequestRegisterRoomJson request)
         {
             var room = _mapper.Map<RoomModel>(request);
 
-            await _roomWriteOnlyRepository.AddRoom(room);
+            await _roomWriteOnlyRepository.Add(room);
 
             return new ResponseRegisteredRoomJson
             {
@@ -53,10 +53,10 @@ namespace MyCinema.Application.Services.Room
             };
         }
 
-        public async Task<ResponseRegisteredRoomJson> UpdateRoom(RequestRegisterRoomJson request, int id)
+        public async Task<ResponseRegisteredRoomJson> Update(RequestRegisterRoomJson request, int id)
         {
             var requestModel = _mapper.Map<RoomModel>(request);
-            RoomModel roomModel = await _roomWriteOnlyRepository.UpdateRoom(requestModel, id);
+            RoomModel roomModel = await _roomWriteOnlyRepository.Update(requestModel, id);
 
             var roomUpdated = _mapper.Map<ResponseRegisteredRoomJson>(roomModel);
 
@@ -64,9 +64,9 @@ namespace MyCinema.Application.Services.Room
 
         }
 
-        public async Task<bool> DeleteRoom(int id)
+        public async Task<bool> Delete(int id)
         {
-            await _roomWriteOnlyRepository.DeleteRoom(id);
+            await _roomWriteOnlyRepository.Delete(id);
 
             return true;
         }

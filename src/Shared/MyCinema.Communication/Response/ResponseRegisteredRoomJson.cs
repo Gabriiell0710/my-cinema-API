@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyCinema.Communication.Response
+﻿namespace MyCinema.Communication.Response
 {
     public class ResponseRegisteredRoomJson
     {

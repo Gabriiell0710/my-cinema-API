@@ -2,7 +2,7 @@
 
 namespace MyCinema.Communication.Response
 {
-    public class ResponseRegisteredUserJson
+    public class ResponseRegisteredUserJson 
     {
         public string Name { get; set; }
         public ProfileEnum Profile { get; set; }

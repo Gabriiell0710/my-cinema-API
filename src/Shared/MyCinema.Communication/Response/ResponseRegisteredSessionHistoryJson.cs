@@ -2,7 +2,7 @@
 {
     public class ResponseRegisteredSessionHistoryJson
     {
-        public string User { get; set; }
-        public string Session { get; set; }
+        public int UserId { get; set; }
+        public int SessionId { get; set; }
     }
 }

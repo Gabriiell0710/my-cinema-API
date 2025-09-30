@@ -5,6 +5,7 @@ using MyCinema.Application.AutoMapper;
 using MyCinema.Application.Services.Film;
 using MyCinema.Application.Services.Room;
 using MyCinema.Application.Services.Session;
+using MyCinema.Application.Services.SessionHistory;
 using MyCinema.Application.Services.User;
 using MyCinema.Domain.Models;
 using MyCinema.Domain.RepositoriesInterfaces.Film;
@@ -49,8 +50,10 @@ namespace MyCinema.API
             builder.Services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
             builder.Services.AddScoped<ISessionHistoryReadOnlyRepository, SessionHistoryRepository>();
             builder.Services.AddScoped<ISessionHistoryWriteOnlyRepository, SessionHistoryRepository>();
+            builder.Services.AddScoped<IFIlmService, FilmService>();
             builder.Services.AddScoped<IRoomService, RoomService>();
             builder.Services.AddScoped<ISessionService, SessionService>();
+            builder.Services.AddScoped<ISessionHistoryService, SessionHistoryService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddAutoMapper(typeof(AutoMapping));
 

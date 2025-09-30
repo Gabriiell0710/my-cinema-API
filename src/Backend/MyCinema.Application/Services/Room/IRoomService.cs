@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace MyCinema.Application.Services.Room
 {
-    public interface IRoomService
+    public interface IRoomService : IBaseServiceInterface<ResponseRegisteredRoomJson,RequestRegisterRoomJson>
     {
-        public Task<ResponseRegisteredRoomJson> AddRoom(RequestRegisterRoomJson request);
-        public Task<List<ResponseRegisteredRoomJson>> FindAllRooms();
-        public Task<ResponseRegisteredRoomJson> FindRoomById (int id);
-        public Task<ResponseRegisteredRoomJson> UpdateRoom(RequestRegisterRoomJson request, int id);
-        public Task<bool> DeleteRoom(int id);
+        
+        public Task<List<ResponseRegisteredRoomJson>> GetAll();
+        public Task<ResponseRegisteredRoomJson> GetById (int id);
+        public Task<ResponseRegisteredRoomJson> Add(RequestRegisterRoomJson request);
+        public Task<ResponseRegisteredRoomJson> Update(RequestRegisterRoomJson request, int id);
+        public Task<bool> Delete(int id);
 
     }
 }

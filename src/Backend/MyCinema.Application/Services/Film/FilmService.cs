@@ -3,11 +3,6 @@ using MyCinema.Communication.Requests;
 using MyCinema.Communication.Response;
 using MyCinema.Domain.Models;
 using MyCinema.Domain.RepositoriesInterfaces.Film;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyCinema.Application.Services.Film
 {
@@ -24,9 +19,9 @@ namespace MyCinema.Application.Services.Film
             _mapper = mapper;
         }
 
-        public async Task<List<ResponseRegisteredFilmJson>> FindAllFilms()
+        public async Task<List<ResponseRegisteredFilmJson>> GetAll()
         {
-            List<FilmModel> filmListModel = await _filmReadOnlyRepository.FindAllFilms();
+            List<FilmModel> filmListModel = await _filmReadOnlyRepository.GetAll();
 
             var film = _mapper.Map<List<ResponseRegisteredFilmJson>>(filmListModel);
 
@@ -34,20 +29,20 @@ namespace MyCinema.Application.Services.Film
 
         }
 
-        public async Task<ResponseRegisteredFilmJson> FindFilmById(int id)
+        public async Task<ResponseRegisteredFilmJson> GetById(int id)
         {
-            FilmModel filmById = await _filmReadOnlyRepository.FindFilmById(id);
+            FilmModel filmById = await _filmReadOnlyRepository.GetById(id);
 
             var film = _mapper.Map<ResponseRegisteredFilmJson>(filmById);
 
             return film;
         }
 
-        public async Task<ResponseRegisteredFilmJson> AddFilm(RequestRegisterFilmJson request)
+        public async Task<ResponseRegisteredFilmJson> Add(RequestRegisterFilmJson request)
         {
             var film = _mapper.Map<FilmModel>(request);
 
-            await _filmWriteOnlyRepository.AddFilm(film);
+            await _filmWriteOnlyRepository.Add(film);
 
             return new ResponseRegisteredFilmJson
             {
@@ -55,10 +50,10 @@ namespace MyCinema.Application.Services.Film
             };
         }
 
-        public async Task<ResponseRegisteredFilmJson> UpdateFilm(RequestRegisterFilmJson request, int id)
+        public async Task<ResponseRegisteredFilmJson> Update(RequestRegisterFilmJson request, int id)
         {
             var requestToConvert = _mapper.Map<FilmModel>(request);
-            FilmModel film = await _filmWriteOnlyRepository.UpdateFilm(requestToConvert, id);
+            FilmModel film = await _filmWriteOnlyRepository.Update(requestToConvert, id);
 
             var filmUpdated = _mapper.Map<ResponseRegisteredFilmJson>(film);
 
@@ -66,9 +61,9 @@ namespace MyCinema.Application.Services.Film
             
         }
 
-        public async Task<bool> DeleteFilm(int id)
+        public async Task<bool> Delete(int id)
         {
-             await _filmWriteOnlyRepository.DeleteFilm(id);
+             await _filmWriteOnlyRepository.Delete(id);
 
             return true;
         }
