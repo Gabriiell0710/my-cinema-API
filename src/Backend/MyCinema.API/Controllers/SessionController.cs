@@ -20,7 +20,7 @@ namespace MyCinema.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ResponseRegisteredSessionJson>>> GetAll()
         {
-           List<ResponseRegisteredSessionJson> session = await _sessionService.FindAllSessions();
+           List<ResponseRegisteredSessionJson> session = await _sessionService.GetAll();
 
            return Ok(session);
         }
@@ -28,27 +28,27 @@ namespace MyCinema.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ResponseRegisteredSessionJson>> GetById (int id)
         {
-            ResponseRegisteredSessionJson session = await _sessionService.FindSessionById(id);
+            ResponseRegisteredSessionJson session = await _sessionService.GetById(id);
 
             return Ok(session);
         }
 
         [HttpPost]
-        public async Task<ActionResult<ResponseRegisteredSessionJson>> Create (RequestRegisterSessionJson request)
+        public async Task<ActionResult<ResponseRegisteredSessionJson>> Add (RequestRegisterSessionJson request)
         {
-            ResponseRegisteredSessionJson session = await _sessionService.AddSession(request);
+            ResponseRegisteredSessionJson session = await _sessionService.Add(request);
             return Ok(session);
         }
         [HttpPut("{id}")]
         public async Task<ActionResult<ResponseRegisteredSessionJson>> Update (RequestRegisterSessionJson request, int id)
         {
-            var session = await _sessionService.UpdateSession(request, id);
+            var session = await _sessionService.Update(request, id);
             return Ok(session);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<ResponseRegisteredSessionJson>> Delete (int id)
         {
-            await _sessionService.DeleteSession(id);
+            await _sessionService.Delete(id);
             return Ok("Deletado");
         }
     }

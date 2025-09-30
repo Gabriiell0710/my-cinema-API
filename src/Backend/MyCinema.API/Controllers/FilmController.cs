@@ -20,23 +20,23 @@ namespace MyCinema.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ResponseRegisteredFilmJson>>> GetAll()
         {
-            List<ResponseRegisteredFilmJson> films = await _filmService.FindAllFilms();
+            List<ResponseRegisteredFilmJson> films = await _filmService.GetAll();
 
             return Ok(films);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ResponseRegisteredFilmJson>> FindById(int id)
+        public async Task<ActionResult<ResponseRegisteredFilmJson>> GetById(int id)
         {
-            ResponseRegisteredFilmJson film = await _filmService.FindFilmById(id);
+            ResponseRegisteredFilmJson film = await _filmService.GetById(id);
 
             return Ok(film);
         }
 
         [HttpPost]
-        public async Task<ActionResult<ResponseRegisteredFilmJson>> Create([FromBody] RequestRegisterFilmJson request)
+        public async Task<ActionResult<ResponseRegisteredFilmJson>> Add([FromBody] RequestRegisterFilmJson request)
         {
-            ResponseRegisteredFilmJson responseRegister = await _filmService.AddFilm(request);
+            ResponseRegisteredFilmJson responseRegister = await _filmService.Add(request);
 
             return Ok(responseRegister);
         }
@@ -44,7 +44,7 @@ namespace MyCinema.API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<ResponseRegisteredFilmJson>> Update([FromBody] RequestRegisterFilmJson request, int id)
         {
-            ResponseRegisteredFilmJson film = await _filmService.UpdateFilm(request,id);
+            ResponseRegisteredFilmJson film = await _filmService.Update(request,id);
 
             return Ok(film);
         }
@@ -52,7 +52,7 @@ namespace MyCinema.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<ResponseRegisteredFilmJson>> Delete (int id)
         {
-            await _filmService.DeleteFilm(id);
+            await _filmService.Delete(id);
 
             return Ok(true);
         }
