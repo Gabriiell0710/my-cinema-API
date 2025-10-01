@@ -1,23 +1,18 @@
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using MyCinema.Application.AutoMapper;
 using MyCinema.Application.Services.Film;
 using MyCinema.Application.Services.Room;
 using MyCinema.Application.Services.Session;
-using MyCinema.Application.Services.SessionHistory;
 using MyCinema.Application.Services.User;
-using MyCinema.Domain.Models;
 using MyCinema.Domain.RepositoriesInterfaces.Film;
 using MyCinema.Domain.RepositoriesInterfaces.Room;
 using MyCinema.Domain.RepositoriesInterfaces.Session;
-using MyCinema.Domain.RepositoriesInterfaces.SessionHistory;
 using MyCinema.Domain.RepositoriesInterfaces.User;
 using MyCinema.Infrastructure.DataAcess;
 using MyCinema.Infrastructure.Repositories.Film;
 using MyCinema.Infrastructure.Repositories.Room;
 using MyCinema.Infrastructure.Repositories.Session;
-using MyCinema.Infrastructure.Repositories.SessionHistory;
 using MyCinema.Infrastructure.Repositories.User;
 
 namespace MyCinema.API
@@ -48,12 +43,9 @@ namespace MyCinema.API
             builder.Services.AddScoped<ISessionWriteOnlyRepository, SessionRepository>();
             builder.Services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             builder.Services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
-            builder.Services.AddScoped<ISessionHistoryReadOnlyRepository, SessionHistoryRepository>();
-            builder.Services.AddScoped<ISessionHistoryWriteOnlyRepository, SessionHistoryRepository>();
             builder.Services.AddScoped<IFIlmService, FilmService>();
             builder.Services.AddScoped<IRoomService, RoomService>();
             builder.Services.AddScoped<ISessionService, SessionService>();
-            builder.Services.AddScoped<ISessionHistoryService, SessionHistoryService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddAutoMapper(typeof(AutoMapping));
 

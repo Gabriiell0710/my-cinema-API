@@ -21,8 +21,7 @@ namespace MyCinema.Application.AutoMapper
                 .ForMember(dest => dest.Room, opt => opt.MapFrom(src => src.Room.Name));
             CreateMap<RequestRegisterUserJson, UserModel>();
             CreateMap<UserModel,ResponseRegisteredUserJson>();
-            CreateMap<RequestRegisterSessionHistoryJson, SessionHistoryModel>();
-            CreateMap<SessionHistoryModel, ResponseRegisteredSessionHistoryJson>();
+           
         }
     }
 }
