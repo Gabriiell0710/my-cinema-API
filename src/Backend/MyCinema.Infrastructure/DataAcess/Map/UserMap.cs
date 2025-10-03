@@ -13,6 +13,9 @@ namespace MyCinema.Infrastructure.DataAcess.Map
             builder.Property(x => x.Email).IsRequired().HasMaxLength(255);
             builder.Property(x => x.Password).IsRequired().HasMaxLength(2000);
             builder.Property(x => x.Profile).IsRequired();
+            builder.Property(x => x.SessionId);
+
+            builder.HasOne(x => x.Session);
     
         }
     }

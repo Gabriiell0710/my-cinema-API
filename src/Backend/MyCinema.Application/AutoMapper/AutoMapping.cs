@@ -21,6 +21,12 @@ namespace MyCinema.Application.AutoMapper
                 .ForMember(dest => dest.Room, opt => opt.MapFrom(src => src.Room.Name));
             CreateMap<RequestRegisterUserJson, UserModel>();
             CreateMap<UserModel,ResponseRegisteredUserJson>();
+            CreateMap<RequestRegisterUserHistoryJson, UserHistoryModel>();
+            CreateMap<UserHistoryModel, ResponseRegisteredUserHistoryJson>()
+                .ForMember(dest => dest.FilmTitle, opt => opt.MapFrom(src => src.Film.Title))
+                .ForMember(dest => dest.SessionDateTime, opt => opt.MapFrom(src => src.Date.DateAndTime.ToString("dd/MM/yyyy")))
+                .ForMember(dest => dest.Room, opt => opt.MapFrom(src => src.Room.Name))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.StatusName.ToString()));
            
         }
     }

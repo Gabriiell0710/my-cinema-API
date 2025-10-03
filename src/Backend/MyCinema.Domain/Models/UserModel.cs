@@ -8,6 +8,10 @@ namespace MyCinema.Domain.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public ProfileEnum Profile { get; set; }
+        public int SessionId { get; set; }
+
+
+        public virtual SessionModel Session { get; set; }
 
     }
 }

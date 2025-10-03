@@ -12,6 +12,7 @@ namespace MyCinema.Infrastructure.DataAcess.Map
             builder.Property(x => x.DateAndTime).IsRequired();
             builder.Property(x => x.FilmId).IsRequired();
             builder.Property(x => x.RoomId).IsRequired();
+            builder.Property(x => x.Status).IsRequired();
 
             builder.HasOne(x => x.Film);
             builder.HasOne(x => x.Room);

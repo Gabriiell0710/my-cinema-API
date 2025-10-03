@@ -17,7 +17,13 @@ namespace MyCinema.Infrastructure.Repositories.UserHistory
 
         public async Task<List<UserHistoryModel>> GetAll()
         {
-            return await _dbContext.UsersHistory.ToListAsync();
+            return await _dbContext.UsersHistory
+                .Include(s => s.User)
+                .Include(s => s.Film)
+                .Include(s => s.Room)
+                .Include(s => s.Date)
+                .Include(s => s.Status)
+                .ToListAsync();
         }
 
         public async Task<UserHistoryModel> GetById(int id)

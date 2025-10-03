@@ -13,11 +13,13 @@ namespace MyCinema.Infrastructure.DataAcess.Map
             builder.Property(x => x.FilmName).IsRequired();
             builder.Property(x => x.RoomName).IsRequired();
             builder.Property(x => x.DateTime).IsRequired();
+            builder.Property(x => x.StatusName).IsRequired();
 
             builder.HasOne(x => x.User);
             builder.HasOne(x => x.Film);
             builder.HasOne(x => x.Room);
             builder.HasOne(x => x.Date);
+            builder.HasOne(x => x.Status);
 
         }
     }
